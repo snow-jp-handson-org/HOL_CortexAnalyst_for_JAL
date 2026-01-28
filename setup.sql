@@ -238,7 +238,20 @@ COPY INTO ASSIGNMENT
 
 
 -- ============================================
--- 8. データ確認
+-- 8. セマンティックビュー用権限設定
+-- ============================================
+-- PUBLICスキーマでセマンティックビューを作成・利用するための権限
+
+-- セマンティックビューの作成権限
+GRANT CREATE SEMANTIC VIEW ON SCHEMA AIRLINE_DEMO.PUBLIC TO ROLE ACCOUNTADMIN;
+
+-- テーブルへのSELECT権限（セマンティックビューが参照するため）
+GRANT SELECT ON ALL TABLES IN SCHEMA AIRLINE_DEMO.PUBLIC TO ROLE ACCOUNTADMIN;
+GRANT SELECT ON FUTURE TABLES IN SCHEMA AIRLINE_DEMO.PUBLIC TO ROLE ACCOUNTADMIN;
+
+
+-- ============================================
+-- 9. データ確認
 -- ============================================
 -- 各テーブルのレコード件数を確認
 
