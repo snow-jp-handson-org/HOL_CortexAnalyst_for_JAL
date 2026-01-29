@@ -250,8 +250,19 @@ GRANT SELECT ON ALL TABLES IN SCHEMA AIRLINE_DEMO.PUBLIC TO ROLE ACCOUNTADMIN;
 GRANT SELECT ON FUTURE TABLES IN SCHEMA AIRLINE_DEMO.PUBLIC TO ROLE ACCOUNTADMIN;
 
 
+
 -- ============================================
--- 9. データ確認
+-- 9. Sample Appの作成
+-- ============================================
+-- Streamlit in Snowflakeの作成
+CREATE OR REPLACE STREAMLIT sis_snowretail_analysis_dev
+    FROM @GIT_INTEGRATION_FOR_ANALYZE_HANDSON/branches/main/App
+    MAIN_FILE = 'Cortex Analyst Sample App.py'
+    QUERY_WAREHOUSE = COMPUTE_WH;
+
+
+-- ============================================
+-- 10. データ確認
 -- ============================================
 -- 各テーブルのレコード件数を確認
 
